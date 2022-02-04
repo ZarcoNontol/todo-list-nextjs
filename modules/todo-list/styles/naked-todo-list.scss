@@ -1,0 +1,43 @@
+.naked-todo-list {
+  // Scoped Cleanup
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  li {
+    list-style-type: none;
+  }
+}
+
+.naked-todo-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.naked-todo-list__button {
+  padding: 10px 15px;
+  border: 1px solid black;
+  appearance: none;
+  line-height: 1;
+}
+
+.naked-todo-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+.naked-todo-list__actions-item {
+  margin-right: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+}

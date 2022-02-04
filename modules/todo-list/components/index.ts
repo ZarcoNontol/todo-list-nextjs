@@ -1,2 +1,2 @@
-export * from './List';
-export * from './TodoList';
+export * from './NakedList';
+export * from './NakedTodoList';

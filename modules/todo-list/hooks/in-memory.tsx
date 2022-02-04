@@ -1,21 +1,9 @@
-import { List, ListItem } from "./List";
 import faker from "faker";
+
 import { useState } from "react";
+import { itemsGenerator } from "../helpers";
 
-const itemsGenerator = () => {
-  const items: ListItem[] = [];
-  for (let index = 1; index < 10; index++) {
-    items.push({
-      id: faker.datatype.uuid(),
-      title: faker.company.companyName(),
-      completed: false
-    });
-  }
-
-  return items;
-};
-
-const useInMemoryTodoList = () => {
+export const useInMemoryTodoList = () => {
   const [items, updateItems] = useState(itemsGenerator());
   
   const addItem = (title: string) => {
@@ -62,24 +50,4 @@ const useInMemoryTodoList = () => {
     updateItem,
     removeItem
   }
-};
-
-export const TodoList = () => {
-  const { items, addItem, removeItem, updateItem } = useInMemoryTodoList(); 
-  return (
-    <div>
-      <button onClick={() => {
-        addItem(faker.company.companyName());
-      }}>Add Item</button>
-      <List
-        items={items}
-        onRemoveItem={(id) => {
-          removeItem(id);
-        }}
-        onUpdateItem={(title, id) => {
-          updateItem(title, id);
-        }}
-      />
-    </div>
-  );
 };

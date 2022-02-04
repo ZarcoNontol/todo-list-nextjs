@@ -12,14 +12,14 @@ export interface ListProps {
   onUpdateItem: (title: string, id: string) => void;
 }
 
-export const List = ({ items, onRemoveItem, onUpdateItem }: ListProps) => {
+export const NakedList = ({ items, onRemoveItem, onUpdateItem }: ListProps) => {
   const [editMode, setEditMode] = useState(false);
   return (
     <ul>
       {items &&
         items.map((item) => {
           return (
-            <li key={item.id}>
+            <li key={item.id} className="naked-todo-list__item">
               {!editMode && item.title}
               {editMode && (
                 <input
@@ -35,20 +35,24 @@ export const List = ({ items, onRemoveItem, onUpdateItem }: ListProps) => {
                 />
               )}
 
-              <button
-                onClick={() => {
-                  setEditMode(true);
-                }}
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => {
-                  onRemoveItem(item.id);
-                }}
-              >
-                Remove
-              </button>
+              <div className="naked-todo-list__actions">
+                <button
+                  className="naked-todo-list__actions-item naked-todo-list__button"
+                  onClick={() => {
+                    setEditMode(true);
+                  }}
+                >
+                  Edit
+                </button>
+                <button
+                  className="naked-todo-list__actions-item naked-todo-list__button"
+                  onClick={() => {
+                    onRemoveItem(item.id);
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
             </li>
           );
         })}
