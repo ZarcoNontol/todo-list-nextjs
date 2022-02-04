@@ -41,3 +41,15 @@
     margin-right: 0;
   }
 }
+
+.naked-todo-list__item-edit-mode {
+  flex: 1;
+  align-self: stretch;
+  display: flex;
+  padding-right: 30px;
+}
+
+.naked-todo-list__item-input {
+  flex: 1;
+  appearance: none;
+}

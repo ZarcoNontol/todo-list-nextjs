@@ -6,6 +6,57 @@ export interface ListItem {
   completed: boolean;
 }
 
+export interface NakedListItemProps {
+  item: ListItem;
+  onRemove: (id: string) => void;
+  onUpdate: (title: string, id: string) => void;
+}
+
+const NakedListItem = ({ item, onRemove, onUpdate }) => {
+  const [editMode, setEditMode] = useState(false);
+  return (
+    <li key={item.id} className="naked-todo-list__item">
+      {!editMode && item.title}
+      {editMode && (
+        <div className="naked-todo-list__item-edit-mode">
+          <input
+            className="naked-todo-list__item-input"
+            type="text"
+            value={item.title}
+            name={`todo-list-${item.id}`}
+            id={item.id}
+            onChange={(event) => {
+              if (event.target.value) {
+                onUpdate(event.target.value, item.id);
+              }
+            }}
+          />
+        </div>
+      )}
+
+      <div className="naked-todo-list__actions">
+        <button
+          className="naked-todo-list__actions-item naked-todo-list__button"
+          onClick={() => {
+            setEditMode(!editMode);
+          }}
+        >
+          {!editMode && "Edit"}
+          {editMode && "Done"}
+        </button>
+        <button
+          className="naked-todo-list__actions-item naked-todo-list__button"
+          onClick={() => {
+            onRemove(item.id);
+          }}
+        >
+          Remove
+        </button>
+      </div>
+    </li>
+  );
+};
+
 export interface ListProps {
   items: ListItem[];
   onRemoveItem: (id: string) => void;
@@ -13,47 +64,17 @@ export interface ListProps {
 }
 
 export const NakedList = ({ items, onRemoveItem, onUpdateItem }: ListProps) => {
-  const [editMode, setEditMode] = useState(false);
   return (
     <ul>
       {items &&
         items.map((item) => {
           return (
-            <li key={item.id} className="naked-todo-list__item">
-              {!editMode && item.title}
-              {editMode && (
-                <input
-                  type="text"
-                  value={item.title}
-                  name={`todo-list-${item.id}`}
-                  id={item.id}
-                  onChange={(event) => {
-                    if (event.target.value) {
-                      onUpdateItem(event.target.value, item.id);
-                    }
-                  }}
-                />
-              )}
-
-              <div className="naked-todo-list__actions">
-                <button
-                  className="naked-todo-list__actions-item naked-todo-list__button"
-                  onClick={() => {
-                    setEditMode(true);
-                  }}
-                >
-                  Edit
-                </button>
-                <button
-                  className="naked-todo-list__actions-item naked-todo-list__button"
-                  onClick={() => {
-                    onRemoveItem(item.id);
-                  }}
-                >
-                  Remove
-                </button>
-              </div>
-            </li>
+            <NakedListItem
+              key={item.id}
+              item={item}
+              onUpdate={onUpdateItem}
+              onRemove={onRemoveItem}
+            />
           );
         })}
     </ul>
