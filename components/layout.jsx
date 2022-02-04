@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import Link from 'next/link'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "./layout.module.css";
+import Link from "next/link";
 
-const name = 'Zarco Nontol'
-export const siteTitle = 'TODO List - Next.js'
+const name = "Zarco Nontol";
+export const siteTitle = "TODO List - Next.js";
 
 export default function Layout({ children, home }) {
   return (
@@ -27,6 +27,11 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         <h1>{name}</h1>
         <h2>Todo Lists</h2>
+        <div>
+          <a href="https://github.com/ZarcoNontol" target={"_blank"}>
+            Github
+          </a>
+        </div>
       </header>
       <main>{children}</main>
       {!home && (
@@ -37,5 +42,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }
