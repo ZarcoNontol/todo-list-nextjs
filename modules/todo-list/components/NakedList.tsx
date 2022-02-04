@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-export interface ListItem {
-  id: string;
-  title: string;
-  completed: boolean;
-}
+import { ListItem } from "../interfaces";
 
 export interface NakedListItemProps {
   item: ListItem;

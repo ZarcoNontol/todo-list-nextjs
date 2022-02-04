@@ -1,10 +1,10 @@
 import faker from "faker";
 
 import { useState } from "react";
-import { itemsGenerator } from "../helpers";
+import { ListItem } from "../interfaces";
 
-export const useInMemoryTodoList = () => {
-  const [items, updateItems] = useState(itemsGenerator());
+export const useInMemoryTodoList = (initialItems: ListItem[]) => {
+  const [items, updateItems] = useState(initialItems);
   
   const addItem = (title: string) => {
     updateItems((state) => {
