@@ -1,7 +1,7 @@
 import { NakedList } from "./NakedList";
 import faker from "faker";
-import { useInMemoryTodoList } from "../hooks";
-import { ListItem } from "../interfaces";
+import { useInMemoryTodoList } from "../../hooks";
+import { ListItem } from "../../interfaces";
 
 export const NakedTodoList = ({ initialItems }: { initialItems: ListItem[]}) => {
   const { items, addItem, removeItem, updateItem } = useInMemoryTodoList(initialItems);

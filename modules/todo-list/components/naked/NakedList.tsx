@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ListItem } from "../interfaces";
+import { ListItem } from "../../interfaces";
 
 export interface NakedListItemProps {
   item: ListItem;
