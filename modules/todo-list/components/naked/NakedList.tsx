@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ListItem } from "../../interfaces";
+import { ListItemDTO } from "../../interfaces";
 
 export interface NakedListItemProps {
-  item: ListItem;
+  item: ListItemDTO;
   onRemove: (id: string) => void;
-  onUpdate: (title: string, id: string) => void;
+  onUpdate: (item: ListItemDTO) => void;
 }
 
 const NakedListItem = ({ item, onRemove, onUpdate }) => {
@@ -22,7 +22,9 @@ const NakedListItem = ({ item, onRemove, onUpdate }) => {
             id={item.id}
             onChange={(event) => {
               if (event.target.value) {
-                onUpdate(event.target.value, item.id);
+                const itemUpdated: ListItemDTO = {...item}
+                itemUpdated.title = event.target.value 
+                onUpdate(itemUpdated);
               }
             }}
           />
@@ -53,9 +55,9 @@ const NakedListItem = ({ item, onRemove, onUpdate }) => {
 };
 
 export interface ListProps {
-  items: ListItem[];
+  items: ListItemDTO[];
   onRemoveItem: (id: string) => void;
-  onUpdateItem: (title: string, id: string) => void;
+  onUpdateItem: (item: ListItemDTO) => void;
 }
 
 export const NakedList = ({ items, onRemoveItem, onUpdateItem }: ListProps) => {

@@ -26,6 +26,8 @@ img {
   display: block;
 }
 
+@import "./pages/home";
+
 // Include Naked Todo List here.
 // This styles will always be included in production.
 @import "../modules/todo-list/styles/naked-todo-list.scss";

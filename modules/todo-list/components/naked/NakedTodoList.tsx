@@ -1,9 +1,9 @@
 import { NakedList } from "./NakedList";
 import faker from "faker";
 import { useInMemoryTodoList } from "../../hooks";
-import { ListItem } from "../../interfaces";
+import { ListItemDTO } from "../../interfaces";
 
-export const NakedTodoList = ({ initialItems }: { initialItems: ListItem[]}) => {
+export const NakedTodoList = ({ initialItems }: { initialItems: ListItemDTO[]}) => {
   const { items, addItem, removeItem, updateItem } = useInMemoryTodoList(initialItems);
   return (
     <div className="naked-todo-list">
@@ -24,9 +24,7 @@ export const NakedTodoList = ({ initialItems }: { initialItems: ListItem[]}) => 
           onRemoveItem={(id) => {
             removeItem(id);
           }}
-          onUpdateItem={(title, id) => {
-            updateItem(title, id);
-          }}
+          onUpdateItem={updateItem}
         />
       </div>
     </div>

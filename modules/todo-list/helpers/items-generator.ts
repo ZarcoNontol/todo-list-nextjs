@@ -1,8 +1,8 @@
 import faker from "faker";
-import { ListItem } from "../components";
+import { ListItemDTO } from "../components";
 
 export const itemsGenerator = () => {
-  const items: ListItem[] = [];
+  const items: ListItemDTO[] = [];
   for (let index = 1; index < 10; index++) {
     items.push({
       id: faker.datatype.uuid(),

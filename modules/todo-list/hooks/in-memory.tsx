@@ -1,9 +1,9 @@
 import faker from "faker";
 
 import { useState } from "react";
-import { ListItem } from "../interfaces";
+import { ListItemDTO } from "../interfaces";
 
-export const useInMemoryTodoList = (initialItems: ListItem[]) => {
+export const useInMemoryTodoList = (initialItems: ListItemDTO[]) => {
   const [items, updateItems] = useState(initialItems);
   
   const addItem = (title: string) => {
@@ -20,14 +20,12 @@ export const useInMemoryTodoList = (initialItems: ListItem[]) => {
     });
   };
 
-  const updateItem = (title: string, id: string) => {
-    const itemToUpdate = items.findIndex((item) => {
-      return item.id === id;
-    });
+  const updateItem = (item: ListItemDTO) => {
+    const itemToUpdate = items.findIndex((needleItem) => needleItem.id === item.id);
 
     updateItems((state) => {
       const newState = [...state];
-      newState[itemToUpdate].title = title;
+      newState[itemToUpdate] = item;
       return newState;
     });
   };
