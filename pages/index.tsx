@@ -2,13 +2,9 @@ import { Button } from "@mui/material";
 import Head from "next/head";
 import { useState } from "react";
 import Layout, { siteTitle } from "../components/layout";
-import { NakedTodoList, MUITodoList } from "../modules/todo-list";
+import { NakedTodoList, MUITodoList, TodoListMode } from "../modules/todo-list";
 import { itemsGenerator } from "../modules/todo-list/helpers";
 
-export enum TodoListMode {
-  NAKED = "NAKED",
-  MUI = "MUI",
-}
 
 export default function Home({ items }) {
   const [listType, setListType] = useState<TodoListMode>(TodoListMode.MUI);

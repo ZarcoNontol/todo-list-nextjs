@@ -15,3 +15,9 @@ export interface ListItemRootProps {
   onRemove: (id: string) => void;
   onUpdate: (item: ListItemDTO) => void;
 }
+
+
+export enum TodoListMode {
+  NAKED = "NAKED",
+  MUI = "MUI",
+}

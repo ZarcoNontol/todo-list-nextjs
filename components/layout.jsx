@@ -28,8 +28,8 @@ export default function Layout({ children, home }) {
         <h1>{name}</h1>
         <h2>Todo Lists</h2>
         <div>
-          <a href="https://github.com/ZarcoNontol" target={"_blank"}>
-            Github
+          <a href="https://github.com/ZarcoNontol/todo-list-nextjs" target={"_blank"}>
+            Github Repo
           </a>
         </div>
       </header>
