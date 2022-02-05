@@ -8,3 +8,10 @@ export interface ListItemDTO {
   title: string;
   completed: boolean;
 }
+
+
+export interface ListItemRootProps {
+  item: ListItemDTO;
+  onRemove: (id: string) => void;
+  onUpdate: (item: ListItemDTO) => void;
+}

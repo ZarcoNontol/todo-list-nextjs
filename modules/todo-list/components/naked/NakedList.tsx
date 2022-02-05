@@ -1,13 +1,7 @@
 import { useState } from "react";
-import { ListItemDTO } from "../../interfaces";
+import { ListItemDTO, ListItemRootProps } from "../../interfaces";
 
-export interface NakedListItemProps {
-  item: ListItemDTO;
-  onRemove: (id: string) => void;
-  onUpdate: (item: ListItemDTO) => void;
-}
-
-const NakedListItem = ({ item, onRemove, onUpdate }) => {
+const NakedListItem = ({ item, onRemove, onUpdate }: ListItemRootProps) => {
   const [editMode, setEditMode] = useState(false);
   return (
     <li key={item.id} className="naked-todo-list__item">
